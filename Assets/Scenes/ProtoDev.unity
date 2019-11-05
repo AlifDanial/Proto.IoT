@@ -146,7 +146,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -124.8, y: 113.6}
+  m_AnchoredPosition: {x: -124.800026, y: 113.60001}
   m_SizeDelta: {x: 47.68, y: 47.68}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &15764354
@@ -2054,7 +2054,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -123.8, y: 113.599976}
+  m_AnchoredPosition: {x: -123.799995, y: 113.600006}
   m_SizeDelta: {x: 43.758, y: 43.76}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &571526568
@@ -2336,6 +2336,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 857930922}
+        m_MethodName: SetLogo
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &735781797
@@ -2532,6 +2543,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 857930921}
+  - component: {fileID: 857930923}
   - component: {fileID: 857930922}
   m_Layer: 0
   m_Name: _ProtoDevManager
@@ -2563,9 +2575,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 857930920}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 082fc18e8ae0e934eb0d37851909075c, type: 3}
+  m_Script: {fileID: 11500000, guid: 5304c3596b43be94796bdfd8b201c643, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &857930923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 857930920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d709d99e1789d64497e745afbee255d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  img1: {fileID: 905734156}
+  img2: {fileID: 15764354}
+  img3: {fileID: 1347334261}
+  img4: {fileID: 571526568}
 --- !u!1 &905734154
 GameObject:
   m_ObjectHideFlags: 0
@@ -2577,7 +2605,6 @@ GameObject:
   - component: {fileID: 905734155}
   - component: {fileID: 905734157}
   - component: {fileID: 905734156}
-  - component: {fileID: 905734158}
   m_Layer: 0
   m_Name: RFIDinputlogo
   m_TagString: Untagged
@@ -2601,7 +2628,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -124.8, y: 113.6}
+  m_AnchoredPosition: {x: -124.800026, y: 113.60001}
   m_SizeDelta: {x: 47.68, y: 47.68}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &905734156
@@ -2641,18 +2668,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 905734154}
   m_CullTransparentMesh: 0
---- !u!114 &905734158
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 905734154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 082fc18e8ae0e934eb0d37851909075c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &918774903
 GameObject:
   m_ObjectHideFlags: 0
@@ -3508,6 +3523,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 857930922}
+        m_MethodName: SetLogo
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1078597369
@@ -4217,6 +4243,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 857930922}
+        m_MethodName: SetLogo
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1198418311
@@ -4485,7 +4522,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -124.7, y: 113.6}
+  m_AnchoredPosition: {x: -124.7, y: 113.60001}
   m_SizeDelta: {x: 34.4, y: 44.28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1347334261
@@ -5266,6 +5303,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 857930922}
+        m_MethodName: SetLogo
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 905734154}
         m_MethodName: SetActive
         m_Mode: 6
