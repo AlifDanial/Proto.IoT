@@ -29,8 +29,6 @@ public class Logo : MonoBehaviour
     public Text txt9;
     public Text txt10;
 
-    public Button resetButton;
-    public Button resetButton1;
     public Text status;
     public Text status1;
     public Text READY;
@@ -65,8 +63,6 @@ public class Logo : MonoBehaviour
         txt9.enabled = false;
         txt10.enabled = false;
 
-        resetButton.gameObject.SetActive(false);
-        resetButton1.gameObject.SetActive(false);
         status.enabled = false;
         status1.enabled = false;
         READY.enabled = false;
@@ -87,8 +83,8 @@ public class Logo : MonoBehaviour
             img3.enabled = false;
             img4.enabled = false;
 
-            resetButton.gameObject.SetActive(true);
             status.enabled = true;
+            NOTREADY.enabled = true;
         }
         if (i == 2)
         {
@@ -97,8 +93,8 @@ public class Logo : MonoBehaviour
             img3.enabled = false;
             img4.enabled = false;
 
-            resetButton.gameObject.SetActive(true);
             status.enabled = true;
+            NOTREADY.enabled = true;
         }
         if (i == 3)
         {
@@ -107,8 +103,8 @@ public class Logo : MonoBehaviour
             img3.enabled = true;
             img4.enabled = false;
 
-            resetButton.gameObject.SetActive(true);
             status.enabled = true;
+            NOTREADY.enabled = true;
         }
         if (i == 4)
         {
@@ -117,8 +113,8 @@ public class Logo : MonoBehaviour
             img3.enabled = false;
             img4.enabled = true;
 
-            resetButton.gameObject.SetActive(true);
             status.enabled = true;
+            NOTREADY.enabled = true;
 
         }
         if (i == 5)
@@ -130,8 +126,9 @@ public class Logo : MonoBehaviour
             img9.enabled = false;
             img10.enabled = false;
 
-            resetButton1.gameObject.SetActive(true);
             status1.enabled = true;
+            NOTREADY1.enabled = true;
+
 
         }
         if (i == 6)
@@ -143,9 +140,8 @@ public class Logo : MonoBehaviour
             img9.enabled = false;
             img10.enabled = false;
 
-            resetButton1.gameObject.SetActive(true);
             status1.enabled = true;
-
+            NOTREADY1.enabled = true;
         }
         if (i == 7)
         {
@@ -156,9 +152,8 @@ public class Logo : MonoBehaviour
             img9.enabled = false;
             img10.enabled = false;
 
-            resetButton1.gameObject.SetActive(true);
             status1.enabled = true;
-
+            NOTREADY1.enabled = true;
         }
         if (i == 8)
         {
@@ -169,9 +164,8 @@ public class Logo : MonoBehaviour
             img9.enabled = false;
             img10.enabled = false;
 
-            resetButton1.gameObject.SetActive(true);
             status1.enabled = true;
-
+            NOTREADY1.enabled = true;
         }
         if (i == 9)
         {
@@ -182,9 +176,8 @@ public class Logo : MonoBehaviour
             img9.enabled = true;
             img10.enabled = false;
 
-            resetButton1.gameObject.SetActive(true);
             status1.enabled = true;
-
+            NOTREADY1.enabled = true;
         }
         if (i == 10)
         {
@@ -195,9 +188,8 @@ public class Logo : MonoBehaviour
             img9.enabled = false;
             img10.enabled = true;
 
-            resetButton1.gameObject.SetActive(true);
             status1.enabled = true;
-
+            NOTREADY1.enabled = true;
         }
     }
 
