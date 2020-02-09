@@ -36,6 +36,10 @@ public class Logo : MonoBehaviour
     public Text READY1;
     public Text NOTREADY1;
 
+    public bool input = false;
+    public bool output = false;
+
+
 
 
     void Start()
@@ -85,6 +89,7 @@ public class Logo : MonoBehaviour
 
             status.enabled = true;
             NOTREADY.enabled = true;
+            READY.enabled = false;
         }
         if (i == 2)
         {
@@ -95,6 +100,7 @@ public class Logo : MonoBehaviour
 
             status.enabled = true;
             NOTREADY.enabled = true;
+            READY.enabled = false;
         }
         if (i == 3)
         {
@@ -105,6 +111,7 @@ public class Logo : MonoBehaviour
 
             status.enabled = true;
             NOTREADY.enabled = true;
+            READY.enabled = false;
         }
         if (i == 4)
         {
@@ -115,6 +122,7 @@ public class Logo : MonoBehaviour
 
             status.enabled = true;
             NOTREADY.enabled = true;
+            READY.enabled = false;
 
         }
         if (i == 5)
@@ -128,6 +136,7 @@ public class Logo : MonoBehaviour
 
             status1.enabled = true;
             NOTREADY1.enabled = true;
+            READY1.enabled = false;
 
 
         }
@@ -142,6 +151,7 @@ public class Logo : MonoBehaviour
 
             status1.enabled = true;
             NOTREADY1.enabled = true;
+            READY1.enabled = false;
         }
         if (i == 7)
         {
@@ -154,6 +164,7 @@ public class Logo : MonoBehaviour
 
             status1.enabled = true;
             NOTREADY1.enabled = true;
+            READY1.enabled = false;
         }
         if (i == 8)
         {
@@ -166,6 +177,7 @@ public class Logo : MonoBehaviour
 
             status1.enabled = true;
             NOTREADY1.enabled = true;
+            READY1.enabled = false;
         }
         if (i == 9)
         {
@@ -178,6 +190,7 @@ public class Logo : MonoBehaviour
 
             status1.enabled = true;
             NOTREADY1.enabled = true;
+            READY1.enabled = false;
         }
         if (i == 10)
         {
@@ -190,6 +203,7 @@ public class Logo : MonoBehaviour
 
             status1.enabled = true;
             NOTREADY1.enabled = true;
+            READY1.enabled = false;
         }
     }
 
@@ -278,6 +292,48 @@ public class Logo : MonoBehaviour
             txt9.enabled = false;
             txt10.enabled = true;
         }
+    }
+
+    public void OutputReady()
+    {
+        NOTREADY1.enabled = false;
+        READY1.enabled = true;
+    }
+
+    public void InputReady() 
+    {
+        NOTREADY.enabled = false;
+        READY.enabled = true;
+    }
+
+    public bool InputGetStatus()
+    {
+        if (READY.enabled == true)
+        {
+            input = true;
+            return input;
+        }
+        else 
+        {
+            input = false;
+            return input;
+        }
+            
+    }
+
+    public bool OutputGetStatus()
+    {
+        if (READY1.enabled == true)
+        {
+            input = true;
+            return input;
+        }
+        else
+        {
+            input = false;
+            return input;
+        }
+
     }
 }
         

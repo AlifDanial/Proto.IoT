@@ -9,12 +9,13 @@ public class ImageSelector : MonoBehaviour
     public Button prefab;
     public string BackgroundURL;
     public string path;
+    public bool clicked = false;
 
     public void select()
-    {
-        Debug.Log(this.gameObject.GetComponent<Image>().sprite.name);
+    {        
         BackgroundURL = this.gameObject.GetComponent<Image>().sprite.name;
         Debug.Log(BackgroundURL);
+        clicked = true;
     }  
 
 }

@@ -30,6 +30,11 @@ public class ButtonHighlight : MonoBehaviour {
     public GameObject VIDEO;
     public GameObject GRAPHICS;
 
+    public int input;
+    public int output;
+
+
+
     void Start()
     {
         InitializeColors(btn1);
@@ -119,6 +124,7 @@ public class ButtonHighlight : MonoBehaviour {
             InitializeGO(MOTION);
             InitializeGO(TOUCH);
             InitializeGO(SOUND);
+            input = 1;
         }
         if (i == 2)
         {
@@ -130,6 +136,7 @@ public class ButtonHighlight : MonoBehaviour {
             InitializeGO(RFID);
             InitializeGO(TOUCH);
             InitializeGO(SOUND);
+            input = 2;
         }
         if (i == 3)
         {
@@ -141,6 +148,7 @@ public class ButtonHighlight : MonoBehaviour {
             InitializeGO(MOTION);
             InitializeGO(RFID);
             InitializeGO(SOUND);
+            input = 3;
         }
         if (i == 4)
         {
@@ -152,6 +160,7 @@ public class ButtonHighlight : MonoBehaviour {
             InitializeGO(MOTION);
             InitializeGO(TOUCH);
             InitializeGO(RFID);
+            input = 4;
         }
 
     }
@@ -171,6 +180,7 @@ public class ButtonHighlight : MonoBehaviour {
             InitializeGO(MOTOR);
             InitializeGO(VIDEO);
             InitializeGO(GRAPHICS);
+            output = 1;
         }
         if (i == 6)
         {
@@ -201,6 +211,7 @@ public class ButtonHighlight : MonoBehaviour {
             InitializeGO(MOTOR);
             InitializeGO(VIDEO);
             InitializeGO(GRAPHICS);
+            output = 3;
         }
         if (i == 8)
         {
@@ -231,6 +242,7 @@ public class ButtonHighlight : MonoBehaviour {
             InitializeGO(MOTOR);
             InitializeGO(AUDIO);
             InitializeGO(GRAPHICS);
+            output = 4;
         }
         if (i == 10)
         {
@@ -246,10 +258,20 @@ public class ButtonHighlight : MonoBehaviour {
             InitializeGO(MOTOR);
             InitializeGO(VIDEO);
             InitializeGO(AUDIO);
+            output = 2;
         }
 
     }
 
 
+    public int getInput()
+    {
+        return input;
+    }
+
+    public int getOutput()
+    {
+        return output;
+    }
 
 }

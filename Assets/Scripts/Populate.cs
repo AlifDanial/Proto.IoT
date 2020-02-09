@@ -15,12 +15,13 @@ public class Populate : MonoBehaviour
         Sprite Isprite;
 
         path = EditorUtility.OpenFilePanel("Import an Image", "", "jpg,png");
-        if (path != null)
+        if (path.Length != 0)
         {
             o = (Button)Instantiate(prefab, transform);
             WWW www = new WWW("file:///" + path);
             Isprite = Sprite.Create(www.texture, new Rect(0, 0, www.texture.width, www.texture.height), new Vector2(0.5f, 0.5f));
-            o.GetComponent<Image>().sprite = Isprite;
+            o.GetComponent<Image>().sprite = Isprite;   
+            o.GetComponent<Image>().sprite.name = path;
         }
     }
 }

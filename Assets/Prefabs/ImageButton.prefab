@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7090402320456095835}
   - component: {fileID: 1517890204189059263}
   - component: {fileID: 8022099077961040874}
+  - component: {fileID: 6391904513935252768}
   m_Layer: 5
   m_Name: ImageButton
   m_TagString: Untagged
@@ -115,12 +116,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 62398966143a50f4f9388396460c5153, type: 3}
-        m_MethodName: 
+      - m_Target: {fileID: 6391904513935252768}
+        m_MethodName: select
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -128,3 +129,19 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &6391904513935252768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8699511658958917257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62398966143a50f4f9388396460c5153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 8022099077961040874}
+  BackgroundURL: 
+  path: 
+  clicked: 0
