@@ -8,8 +8,8 @@ using UnityEditor;
 public class videoInstant : MonoBehaviour
 {
     public RawImage prefab;
-    public VideoPlayer player;
-    public RenderTexture texture;
+    public VideoPlayer player;  
+    RenderTexture rendertexture;
     public string path;
 
     public void Import()
@@ -20,12 +20,18 @@ public class videoInstant : MonoBehaviour
         path = EditorUtility.OpenFilePanel("Import a Video Clip", "", "asf,avi,dv,m4v,mov,mpg,mp4,mpeg,ogv,vp8,wbm,wmv");
         if (path.Length != 0)
         {
+            rendertexture = new RenderTexture(1920, 1080, 24);
+
             o = Instantiate(prefab, transform);
-            WWW www = new WWW("file:///" + path);
-            //Isprite = Sprite.Create(www.texture, new Rect(0, 0, www.texture.width, www.texture.height), new Vector2(0.5f, 0.5f));            
+            o = player.gameObject.GetComponent<RawImage>();
+            o.texture = rendertexture;
+
+            WWW www = new WWW("file:///" + path);            
             player.url = path;
-            player.targetTexture = texture;
-            o.texture = texture;
+            
+            player.renderMode = UnityEngine.Video.VideoRenderMode.RenderTexture;
+            player.targetTexture = rendertexture;
+            player.Play();
         }
     }
 

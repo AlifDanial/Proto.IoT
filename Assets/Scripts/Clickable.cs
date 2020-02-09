@@ -5,6 +5,7 @@ using UnityEngine;
 public class Clickable : MonoBehaviour
 {
     public ImageSelector imageselector;
+    public videoController videocontrol;
     public TextCheck textchecker;
     public Popup popup;
     public Logo logo;
@@ -25,6 +26,16 @@ public class Clickable : MonoBehaviour
         if(textchecker.isEmpty() == false)
         {
             Debug.Log(textchecker.isEmpty());
+            logo.OutputReady();
+            popup.PopupClose(go);
+        }
+    }
+
+    public void closeVideo(GameObject go)
+    {
+        if (videocontrol.clicked == true)
+        {
+            Debug.Log(videocontrol.clicked);
             logo.OutputReady();
             popup.PopupClose(go);
         }
