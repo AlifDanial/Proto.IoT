@@ -13,11 +13,9 @@ public class audioController : MonoBehaviour
     {
         url = audio.clip.name;
         Debug.Log(url);
+
+
     }
 
-    public void Update()
-    {
-        url = audio.clip.name;
-        text.text = url;
-    }
+   
 }
