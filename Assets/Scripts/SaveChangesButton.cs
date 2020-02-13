@@ -15,12 +15,6 @@ public class SaveChangesButton : MonoBehaviour
     
     bool clickable = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -53,7 +47,10 @@ public class SaveChangesButton : MonoBehaviour
     {
         if(clickable == true)
         {
-            mt.create();        
+            mt.create();
+            clickable = false;
+            logo.setInputFalse();
+            logo.setOutputFalse();
         }
         
     }

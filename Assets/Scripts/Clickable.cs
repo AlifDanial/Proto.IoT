@@ -6,6 +6,7 @@ public class Clickable : MonoBehaviour
 {
     public ImageSelector imageselector;
     public videoController videocontrol;
+    public audioController audiocontrol;
     public TextCheck textchecker;
     public Popup popup;
     public Logo logo;
@@ -26,6 +27,7 @@ public class Clickable : MonoBehaviour
         if(textchecker.isEmpty() == false)
         {
             Debug.Log(textchecker.isEmpty());
+            textchecker.savereset();
             logo.OutputReady();
             popup.PopupClose(go);
         }
@@ -36,6 +38,18 @@ public class Clickable : MonoBehaviour
         if (videocontrol.clicked == true)
         {
             Debug.Log(videocontrol.clicked);
+            videocontrol.clicked = false;
+            logo.OutputReady();
+            popup.PopupClose(go);
+        }
+    }
+
+    public void closeAudio(GameObject go)
+    {
+        if (audiocontrol.clicked == true)
+        {
+            Debug.Log(audiocontrol.clicked);
+            audiocontrol.clicked = false;
             logo.OutputReady();
             popup.PopupClose(go);
         }

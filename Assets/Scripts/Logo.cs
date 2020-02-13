@@ -335,6 +335,20 @@ public class Logo : MonoBehaviour
         }
 
     }
+
+    public void setInputFalse()
+    {
+        READY.enabled = false;
+        NOTREADY.enabled = true;
+    }
+
+    public void setOutputFalse()
+    {
+        READY1.enabled = false;
+        NOTREADY1.enabled = true;
+    }
+
+
 }
         
 

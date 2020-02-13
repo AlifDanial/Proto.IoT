@@ -32,7 +32,8 @@ public class audioInstantiate : MonoBehaviour
             WWW www = new WWW(url);
             yield return www;
 
-            audios.clip = www.GetAudioClip(false, true);
+            audios.clip = www.GetAudioClip(false, true, AudioType.OGGVORBIS);
+            audios.clip.name = url;
             audios.Play();
             //Isprite = Sprite.Create(www.texture, new Rect(0, 0, www.texture.width, www.texture.height), new Vector2(0.5f, 0.5f));
             //o.GetComponent<Image>().sprite = Isprite;

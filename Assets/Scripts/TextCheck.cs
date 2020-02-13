@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class TextCheck : MonoBehaviour
 {
-
     public InputField inputf;
     public bool empty = true;
 
@@ -17,5 +16,10 @@ public class TextCheck : MonoBehaviour
         }
         else
             return empty = false;
+    }
+
+    public void savereset()
+    {
+        inputf.text = "";
     }
 }

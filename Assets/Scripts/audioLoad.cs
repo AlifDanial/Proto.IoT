@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class audioLoad : MonoBehaviour
 {
-    public audioInstantiate instantiate;
+    public MP3Import mp3;
 
     public void importAudio()
     {
-        instantiate.Import();
+        mp3.StartImport();
     }
 }
