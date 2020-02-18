@@ -8,8 +8,10 @@ public class Clickable : MonoBehaviour
     public videoController videocontrol;
     public audioController audiocontrol;
     public TextCheck textchecker;
+    public makeTrigger mt;
     public Popup popup;
     public Logo logo;
+
 
    public void close(GameObject go)
     {
@@ -17,6 +19,7 @@ public class Clickable : MonoBehaviour
         {
             Debug.Log(imageselector.clicked);
             imageselector.clicked = false;
+            mt.setImageURL(imageselector.getURL());
             logo.OutputReady();
             popup.PopupClose(go);
         }
@@ -28,6 +31,7 @@ public class Clickable : MonoBehaviour
         {
             Debug.Log(textchecker.isEmpty());
             textchecker.savereset();
+            mt.setText(textchecker.getText());            
             logo.OutputReady();
             popup.PopupClose(go);
         }
@@ -39,6 +43,7 @@ public class Clickable : MonoBehaviour
         {
             Debug.Log(videocontrol.clicked);
             videocontrol.clicked = false;
+            mt.setVideoURL(videocontrol.getURL());
             logo.OutputReady();
             popup.PopupClose(go);
         }
@@ -50,8 +55,12 @@ public class Clickable : MonoBehaviour
         {
             Debug.Log(audiocontrol.clicked);
             audiocontrol.clicked = false;
+            mt.setAudioURL(audiocontrol.getURL());
             logo.OutputReady();
             popup.PopupClose(go);
         }
     }
+
+    
 }
+

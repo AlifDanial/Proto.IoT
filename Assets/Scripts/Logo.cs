@@ -37,7 +37,7 @@ public class Logo : MonoBehaviour
     public Text NOTREADY1;
 
     public bool input = false;
-    public bool output = false;
+    public bool output = false;    
 
 
 
@@ -347,7 +347,6 @@ public class Logo : MonoBehaviour
         READY1.enabled = false;
         NOTREADY1.enabled = true;
     }
-
 
 }
         

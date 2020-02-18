@@ -7,12 +7,18 @@ public class videoController : MonoBehaviour
 {
     public VideoPlayer vp;
     public bool clicked = false;
+    public string URL;
 
     public void select()
     {
-        string URL = vp.url;
+        URL = vp.url;
         Debug.Log(URL);
         clicked = true;
+    }
+
+    public string getURL()
+    {
+        return URL;
     }
 
 

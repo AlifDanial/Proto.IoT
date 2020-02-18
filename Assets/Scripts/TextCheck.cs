@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class TextCheck : MonoBehaviour
 {
     public InputField inputf;
+    public string Text;
     public bool empty = true;
 
     public bool isEmpty()
@@ -20,6 +21,13 @@ public class TextCheck : MonoBehaviour
 
     public void savereset()
     {
+        Text = inputf.text;
+        Debug.Log(Text);
         inputf.text = "";
+    }
+
+    public string getText()
+    {
+        return Text;
     }
 }

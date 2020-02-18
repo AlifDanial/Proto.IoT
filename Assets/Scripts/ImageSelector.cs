@@ -18,5 +18,9 @@ public class ImageSelector : MonoBehaviour
         clicked = true;
     }  
 
+    public string getURL()
+    {
+        return BackgroundURL;
+    }
 }
 

@@ -26,5 +26,10 @@ public class audioController : MonoBehaviour
         text.text = file;
     }
 
+    public string getURL()
+    {
+        return url;
+    }
+
    
 }
