@@ -60,10 +60,12 @@
     <Compile Include="Assets\Scripts\audioLoad.cs" />
     <Compile Include="Assets\Scripts\ButtonHighlight.cs" />
     <Compile Include="Assets\Scripts\Clickable.cs" />
+    <Compile Include="Assets\Scripts\DataManager.cs" />
     <Compile Include="Assets\Scripts\imageLoad.cs" />
     <Compile Include="Assets\Scripts\ImageSelector.cs" />
     <Compile Include="Assets\Scripts\importBool.cs" />
     <Compile Include="Assets\Scripts\InputReadyStatus.cs" />
+    <Compile Include="Assets\Scripts\JSONwrapper.cs" />
     <Compile Include="Assets\Scripts\Logo.cs" />
     <Compile Include="Assets\Scripts\makeTrigger.cs" />
     <Compile Include="Assets\Scripts\MP3Import.cs" />

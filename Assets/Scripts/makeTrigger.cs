@@ -43,7 +43,7 @@ public class makeTrigger : MonoBehaviour
             OAction = Txtcols[2];
             objs.Add(go);       
             
-            Debug.Log("instantiate1");
+            Debug.Log("instantiate");
         }        
 
         if (i == 1)
@@ -69,8 +69,9 @@ public class makeTrigger : MonoBehaviour
         {
             OName.text = "Audio";
             OAction.text = "PLAY";
-            PlayerPrefs.SetString(PlayerPrefs.GetString("trigger") + "output", OName.text);
+            PlayerPrefs.SetString(PlayerPrefs.GetString("trigger") + "output", OName.text);            
             Debug.Log(PlayerPrefs.GetString(PlayerPrefs.GetString("trigger") + "output"));
+            
             PlayerPrefs.SetString("audioURL" + j, audioURL);
             Debug.Log("audio = " + audioURL);
         }
@@ -78,8 +79,9 @@ public class makeTrigger : MonoBehaviour
         {
             OName.text = "Image";
             OAction.text = "DISPLAY";            
-            PlayerPrefs.SetString(PlayerPrefs.GetString("trigger") + "output", OName.text);
+            PlayerPrefs.SetString(PlayerPrefs.GetString("trigger") + "output", OName.text);            
             Debug.Log(PlayerPrefs.GetString(PlayerPrefs.GetString("trigger") + "output"));
+            
             PlayerPrefs.SetString("imageURL" + j, imageURL);
             Debug.Log("image = " + imageURL);
         }
@@ -87,8 +89,9 @@ public class makeTrigger : MonoBehaviour
         {
             OName.text = "Text";
             OAction.text = "DISPLAY";
-            PlayerPrefs.SetString(PlayerPrefs.GetString("trigger") + "output", OName.text);
+            PlayerPrefs.SetString(PlayerPrefs.GetString("trigger") + "output", OName.text);            
             Debug.Log(PlayerPrefs.GetString(PlayerPrefs.GetString("trigger") + "output"));
+           
             PlayerPrefs.SetString("Text" + j, Text);
             Debug.Log("text = " + Text);
 
@@ -97,8 +100,9 @@ public class makeTrigger : MonoBehaviour
         {
             OName.text = "Video";
             OAction.text = "DISPLAY"; 
-            PlayerPrefs.SetString(PlayerPrefs.GetString("trigger") + "output", OName.text);
+            PlayerPrefs.SetString(PlayerPrefs.GetString("trigger") + "output", OName.text);            
             Debug.Log(PlayerPrefs.GetString(PlayerPrefs.GetString("trigger") + "output"));             
+            
             PlayerPrefs.SetString("videoURL" + j, videoURL);
             Debug.Log("video = " + videoURL);
         }              
@@ -106,119 +110,7 @@ public class makeTrigger : MonoBehaviour
         j++;        
 
         Debug.Log("after " + j);
-    }
-
-    public void delete(GameObject go)
-    {
-        if(j != 1)            
-        {
-            PlayerPrefs.SetInt("trigger", j);
-            int x = PlayerPrefs.GetInt("inputType" + j);
-            Debug.Log("delete " + x + " : index " + j);
-
-            if (x == 1)
-            {
-                //PlayerPrefs.DeleteKey();
-            }
-            else if (x == 2)
-            {
-                //PlayerPrefs.DeleteKey();
-            }
-            else
-            {
-                //PlayerPrefs.DeleteKey();
-            }
-            
-            int y = PlayerPrefs.GetInt("outputType" + j);
-            Debug.Log("delete " + y + " : index " + j);
-
-            if (y == 1)
-            {
-                PlayerPrefs.DeleteKey("audioURL" + j);
-            }
-            else if (y == 2)
-            {
-                PlayerPrefs.DeleteKey("imageURL" + j);
-            }
-            else if (y == 3)
-            {
-                PlayerPrefs.DeleteKey("Text" + j);
-            }
-            else
-            {
-                PlayerPrefs.DeleteKey("videoURL" + j);
-            }
-
-            Destroy(go);
-            Debug.Log("destroy");            
-            j--;
-        }
-        else
-        {
-
-             int x = PlayerPrefs.GetInt("inputType" + j);
-            Debug.Log("delete " + x + " : index " + j);
-
-            if (x == 1)
-            {
-                //PlayerPrefs.DeleteKey();
-            }
-            else if (x == 2)
-            {
-                //PlayerPrefs.DeleteKey();
-            }
-            else
-            {
-                //PlayerPrefs.DeleteKey();
-            }
-            
-            int y = PlayerPrefs.GetInt("outputType" + j);
-            Debug.Log("delete " + y + " : index " + j);
-
-            if (y == 1)
-            {
-                PlayerPrefs.DeleteKey("audioURL" + j);
-            }
-            else if (y == 2)
-            {
-                PlayerPrefs.DeleteKey("imageURL" + j);
-            }
-            else if (y == 3)
-            {
-                PlayerPrefs.DeleteKey("Text" + j);
-            }
-            else
-            {
-                PlayerPrefs.DeleteKey("videoURL" + j);
-            }
-
-            TriggerPrefab.SetActive(false);
-            Debug.Log("hide");
-            j = 0;
-        }
-    }
-
-    public void resetAll()
-    {
-        int h;
-        for (h = j; h == 0; h--)
-        {
-            if (j != 1)
-            {
-                Destroy(go);
-                Debug.Log("destroy");
-                j--;
-            }
-            else
-            {
-                TriggerPrefab.SetActive(false);
-                Debug.Log("hide");
-                j = 0;
-            }
-        }
-       
-        PlayerPrefs.DeleteAll();
-    }
+    }     
 
     public void deleteSeq()
     {
@@ -233,8 +125,13 @@ public class makeTrigger : MonoBehaviour
             Debug.Log("input =" + PlayerPrefs.GetString("T" + j + "input"));
             Debug.Log("output =" + PlayerPrefs.GetString("T" + j + "output"));
 
-            PlayerPrefs.DeleteKey("trigger" + j + "input");
-            PlayerPrefs.DeleteKey("trigger" + j + "output");
+            PlayerPrefs.DeleteKey("T" + j + "input");
+            PlayerPrefs.DeleteKey("T" + j + "output");
+
+            PlayerPrefs.DeleteKey("audioURL" + j + "output");
+            PlayerPrefs.DeleteKey("imageURL" + j + "output");
+            PlayerPrefs.DeleteKey("Text" + j + "output");
+            PlayerPrefs.DeleteKey("videoURL" + j + "output");
             
             PlayerPrefs.SetInt("T", PlayerPrefs.GetInt("T")-1);            
 
@@ -243,7 +140,28 @@ public class makeTrigger : MonoBehaviour
             objs.Remove(c);
             Debug.Log("destroy");
             j--;
-        }        
+        }
+
+        else
+        {
+            int l = PlayerPrefs.GetInt("T");
+
+            for (int x = 0; x < l; x++)
+            {
+                //if(PlayerPrefs.GetInt("T") != 0)
+                //{
+                    PlayerPrefs.SetInt("T", PlayerPrefs.GetInt("T") - 1);
+                    PlayerPrefs.DeleteKey("trigger" + x + "input");
+                    PlayerPrefs.DeleteKey("trigger" + x + "output");
+                    PlayerPrefs.DeleteKey("audioURL" + x + "output");
+                    PlayerPrefs.DeleteKey("imageURL" + x + "output");
+                    PlayerPrefs.DeleteKey("Text" + x + "output");
+                    PlayerPrefs.DeleteKey("videoURL" + x + "output");
+                //}
+               
+            }
+        }
+        
             
     }
    

@@ -18,6 +18,7 @@ public class ProjectName : MonoBehaviour
         }
 
         PlayerPrefs.SetString("ProjectName", projectName);     
+        PlayerPrefs.SetString("fileName", projectName + ".json");     
         
     }
 
