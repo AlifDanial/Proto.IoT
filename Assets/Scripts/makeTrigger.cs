@@ -7,31 +7,24 @@ public class makeTrigger : MonoBehaviour
 {
     public ButtonHighlight bh;    
     public GameObject TriggerPrefab;
-    GameObject go;
-    [SerializeField] private Text IName;
-    [SerializeField] private Text OName;
-    [SerializeField] private Text OAction;
-    [SerializeField] private Text ID;
+    public GameObject go;
+    private Text IName;
+    private Text OName;
+    private Text OAction;        
+    public Text[] Txtcols;
     int j = 0;
     int a = 0;
     public string videoURL;
     public string audioURL;
     public string imageURL;
     public string Text;
-    List<GameObject> objs = new List<GameObject>();
-    List<int> input = new List<int>();
-    List<int> output = new List<int>();
+    List<GameObject> objs = new List<GameObject>();    
 
     public void create()
     {
         int i = bh.getInput();
         int o = bh.getOutput();
-
-        //Debug.Log("I = " + i);
-        //Debug.Log("O = " + o);
-
-        //Debug.Log("before " + j);
-
+               
         //increment value of T
         PlayerPrefs.SetInt("T", PlayerPrefs.GetInt("T") + 1);
         Debug.Log(PlayerPrefs.GetInt("T"));
@@ -39,14 +32,19 @@ public class makeTrigger : MonoBehaviour
         PlayerPrefs.SetString("trigger", "T" + PlayerPrefs.GetInt("T"));
         Debug.Log(PlayerPrefs.GetString("trigger"));
 
-        if (j > 0)
-        {          
-            go = (GameObject)Instantiate(TriggerPrefab, transform);
-            objs.Add(go);
-            //input.Add(i);
-            //output.Add(o);
-            Debug.Log("instantiate");
-        }
+        if (j >= 0)
+        {
+            go = Instantiate(TriggerPrefab, transform);
+            
+            Txtcols = go.GetComponentsInChildren<Text>();
+
+            IName = Txtcols[0];
+            OName = Txtcols[1];
+            OAction = Txtcols[2];
+            objs.Add(go);       
+            
+            Debug.Log("instantiate1");
+        }        
 
         if (i == 1)
         {
@@ -103,16 +101,9 @@ public class makeTrigger : MonoBehaviour
             Debug.Log(PlayerPrefs.GetString(PlayerPrefs.GetString("trigger") + "output"));             
             PlayerPrefs.SetString("videoURL" + j, videoURL);
             Debug.Log("video = " + videoURL);
-        }
+        }              
 
-        if (j <= 0)
-        {
-            TriggerPrefab.SetActive(true);
-            Debug.Log("unhide");
-        }        
-
-        j++;
-        ID.text = j.ToString();
+        j++;        
 
         Debug.Log("after " + j);
     }
@@ -232,54 +223,30 @@ public class makeTrigger : MonoBehaviour
     public void deleteSeq()
     {
         a = objs.Count;
-        Debug.Log(a);
+        Debug.Log("objs count = " + a);
         //int b = input.Count;
         //int c = output.Count;
 
-        if (j != 1 && j != 0)
+        if (j > 0)
         {
-            Debug.Log(PlayerPrefs.GetInt("T"));
-            Debug.Log(PlayerPrefs.GetString("T" + j + "input"));
-            Debug.Log(PlayerPrefs.GetString("T" + j + "output"));
+            Debug.Log("before =" + PlayerPrefs.GetInt("T"));
+            Debug.Log("input =" + PlayerPrefs.GetString("T" + j + "input"));
+            Debug.Log("output =" + PlayerPrefs.GetString("T" + j + "output"));
+
             PlayerPrefs.DeleteKey("trigger" + j + "input");
             PlayerPrefs.DeleteKey("trigger" + j + "output");
-
-            Debug.Log(PlayerPrefs.GetInt("T"));
-            Debug.Log(PlayerPrefs.GetString("T" + j + "input"));
-            Debug.Log(PlayerPrefs.GetString("T" + j + "output"));
-
-            PlayerPrefs.SetInt("T", PlayerPrefs.GetInt("T")-1);
-
-
-            //PlayerPrefs.DeleteKey();
+            
+            PlayerPrefs.SetInt("T", PlayerPrefs.GetInt("T")-1);            
 
             GameObject c = objs[a-1];
             Destroy(c);
-            Debug.Log("destroy");
             objs.Remove(c);
+            Debug.Log("destroy");
             j--;
-        }
-        else
-        {
-            TriggerPrefab.SetActive(false);
-            Debug.Log("hide");
-            j = 0;
-            Debug.Log(PlayerPrefs.GetInt("T"));
-            Debug.Log(PlayerPrefs.GetString("T" + "1" + "input"));
-            Debug.Log(PlayerPrefs.GetString("T" + "1" + "output"));
-            PlayerPrefs.DeleteKey("trigger" + "1" + "input");
-            PlayerPrefs.DeleteKey("trigger" + "1" + "output");
-            PlayerPrefs.SetInt("T", PlayerPrefs.GetInt("T") - 1);
-            Debug.Log(PlayerPrefs.GetInt("T"));
-            Debug.Log(PlayerPrefs.GetString("T" + "1" + "input"));
-            Debug.Log(PlayerPrefs.GetString("T" + "1" + "output"));
-            PlayerPrefs.DeleteAll();
-        }
+        }        
             
-
     }
    
-
     public void setVideoURL(string s)
     {
         videoURL = s;
