@@ -7,16 +7,14 @@ using UnityEditor;
 public class ImageSelector : MonoBehaviour
 {
     public Button prefab;
-    public string BackgroundURL;
-    public string path;
-    public bool clicked = false;
+    public string BackgroundURL = "";
+    public Clickable clicks;
 
     public void select()
     {        
         BackgroundURL = this.gameObject.GetComponent<Image>().sprite.name;
+        clicks.ImageURL = BackgroundURL;
         Debug.Log(BackgroundURL);
-        clicked = true;
-        Debug.Log("clicked status = " + clicked);
     }  
 
     public string getURL()

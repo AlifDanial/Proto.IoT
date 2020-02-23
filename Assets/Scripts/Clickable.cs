@@ -11,22 +11,21 @@ public class Clickable : MonoBehaviour
     public makeTrigger mt;
     public Popup popup;
     public Logo logo;
+    
+    public string ImageURL = "";
+    public string AudioURL;
+    public string VideoURL;
 
 
    public void close(GameObject go)
     {
-        if(imageselector.clicked == true)
+        if(ImageURL != "")
         {
-            Debug.Log("clickable clicked status = " + imageselector.clicked);
-            mt.setImageURL(imageselector.getURL());
+            Debug.Log(ImageURL);
+            mt.setImageURL(ImageURL);
             logo.OutputReady();
             popup.PopupClose(go);
-            imageselector.clicked = false;
-        }
-        else
-        {
-            Debug.Log("It aint true but false fam");
-        }
+        }       
     }
 
     public void closeText(GameObject go)
@@ -43,10 +42,9 @@ public class Clickable : MonoBehaviour
 
     public void closeVideo(GameObject go)
     {
-        if (videocontrol.clicked == true)
+        if (VideoURL != "")
         {
-            Debug.Log("clickable clicked status for video  = " + videocontrol.clicked);
-            videocontrol.clicked = false;
+            Debug.Log(VideoURL);
             mt.setVideoURL(videocontrol.getURL());
             logo.OutputReady();
             popup.PopupClose(go);
@@ -55,11 +53,10 @@ public class Clickable : MonoBehaviour
 
     public void closeAudio(GameObject go)
     {
-        if (audiocontrol.clicked == true)
+        if (AudioURL != "")
         {
-            Debug.Log(audiocontrol.clicked);
-            audiocontrol.clicked = false;
-            mt.setAudioURL(audiocontrol.getURL());
+            Debug.Log(AudioURL);
+            mt.setAudioURL(AudioURL);
             logo.OutputReady();
             popup.PopupClose(go);
         }

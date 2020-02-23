@@ -119,11 +119,9 @@ public class makeTrigger : MonoBehaviour
     public void deleteSeq()
     {
         a = objs.Count;
-        Debug.Log("objs count = " + a);
-        //int b = input.Count;
-        //int c = output.Count;
+        Debug.Log("objs Quantity = " + a);
 
-        if (j > 0)
+        if (j > 0 && a != 0)
         {
             Debug.Log("before =" + PlayerPrefs.GetInt("T"));
             Debug.Log("input =" + PlayerPrefs.GetString("T" + j + "input"));
@@ -148,26 +146,25 @@ public class makeTrigger : MonoBehaviour
 
         else
         {
-            PlayerPrefs.DeleteAll();
+            //PlayerPrefs.DeleteAll();
             int l = PlayerPrefs.GetInt("T");
 
-            if (l > 1)
+            if (l > 0)
             {
-                j = 1;
+                j = 0;
 
-                for (int x = 1; x < l; x++)
+                for (int x = 1; x <= l; x++)
                 {
-                    //if(PlayerPrefs.GetInt("T") != 0)
-                    //{
-                    PlayerPrefs.SetInt("T", PlayerPrefs.GetInt("T") - 1);
-                    PlayerPrefs.DeleteKey("trigger" + x + "input");
-                    PlayerPrefs.DeleteKey("trigger" + x + "output");
-                    PlayerPrefs.DeleteKey("audioURL" + x + "output");
-                    PlayerPrefs.DeleteKey("imageURL" + x + "output");
-                    PlayerPrefs.DeleteKey("Text" + x + "output");
-                    PlayerPrefs.DeleteKey("videoURL" + x + "output");
-                    Debug.Log("deleted" + x + "times");
-                    //}
+                    
+                    PlayerPrefs.SetInt("T", PlayerPrefs.GetInt("T") - 1);                   
+
+                    PlayerPrefs.DeleteKey("T" + x + "input");
+                    PlayerPrefs.DeleteKey("T" + x + "output");
+                    PlayerPrefs.DeleteKey("audioURL" + x);
+                    PlayerPrefs.DeleteKey("imageURL" + x);
+                    PlayerPrefs.DeleteKey("Text" + x);
+                    PlayerPrefs.DeleteKey("videoURL" + x);
+                    Debug.Log("deleted " + x + " times");
 
                 }
                 Debug.Log("Deleted all");

@@ -10,14 +10,14 @@ public class audioController : MonoBehaviour
 {
     public AudioSource audio;
     public Text text;
-    string url;
-    public bool clicked = false;
+    public string url;
+    public Clickable clicks;
 
     public void select()
     {
         url = audio.clip.name;
+        clicks.AudioURL = url;
         Debug.Log(url);
-        clicked = true;
     }
 
     public void Update()

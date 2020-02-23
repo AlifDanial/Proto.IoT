@@ -7,6 +7,7 @@ public class DataManager : MonoBehaviour
     string filename;
     string path;
     ProjectData projectData = new ProjectData();
+    int i=0;
 
     // Start is called before the first frame update
     void Start()
@@ -14,6 +15,7 @@ public class DataManager : MonoBehaviour
         
                 
     }
+    
 
     // Update is called once per frame
     void Update()
@@ -39,7 +41,7 @@ public class DataManager : MonoBehaviour
 
         PlayerPrefs.SetInt("Save", 1);
 
-        for (int y = 1; y <= PlayerPrefs.GetInt("T"); y++)
+        for (int y = i + 1; y <= PlayerPrefs.GetInt("T"); y++)
         {
             TriggerData t = new TriggerData();
             t.trigger = y;
@@ -89,9 +91,18 @@ public class DataManager : MonoBehaviour
             }
 
             projectData.triggers.Add(t);
-        
-        
+            
+           /* PlayerPrefs.DeleteKey("T" + y + "input");
+            PlayerPrefs.DeleteKey("T" + y + "output");
+            PlayerPrefs.DeleteKey("audioURL" + y);
+            PlayerPrefs.DeleteKey("imageURL" + y);
+            PlayerPrefs.DeleteKey("Text" + y);
+            PlayerPrefs.DeleteKey("videoURL" + y);
+            Debug.Log("deleted " + y + " times");*/
+
+            i = y;
         }
+
         SaveData();
         Debug.Log("Saved");
     }
