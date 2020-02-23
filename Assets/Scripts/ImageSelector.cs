@@ -16,6 +16,7 @@ public class ImageSelector : MonoBehaviour
         BackgroundURL = this.gameObject.GetComponent<Image>().sprite.name;
         Debug.Log(BackgroundURL);
         clicked = true;
+        Debug.Log("clicked status = " + clicked);
     }  
 
     public string getURL()

@@ -17,11 +17,15 @@ public class Clickable : MonoBehaviour
     {
         if(imageselector.clicked == true)
         {
-            Debug.Log(imageselector.clicked);
-            imageselector.clicked = false;
+            Debug.Log("clickable clicked status = " + imageselector.clicked);
             mt.setImageURL(imageselector.getURL());
             logo.OutputReady();
             popup.PopupClose(go);
+            imageselector.clicked = false;
+        }
+        else
+        {
+            Debug.Log("It aint true but false fam");
         }
     }
 
@@ -41,7 +45,7 @@ public class Clickable : MonoBehaviour
     {
         if (videocontrol.clicked == true)
         {
-            Debug.Log(videocontrol.clicked);
+            Debug.Log("clickable clicked status for video  = " + videocontrol.clicked);
             videocontrol.clicked = false;
             mt.setVideoURL(videocontrol.getURL());
             logo.OutputReady();

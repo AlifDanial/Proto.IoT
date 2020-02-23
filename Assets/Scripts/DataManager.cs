@@ -39,10 +39,11 @@ public class DataManager : MonoBehaviour
 
         PlayerPrefs.SetInt("Save", 1);
 
-        for(int y = 1; y <= PlayerPrefs.GetInt("T"); y++)
+        for (int y = 1; y <= PlayerPrefs.GetInt("T"); y++)
         {
             TriggerData t = new TriggerData();
             t.trigger = y;
+
             t.inputType = PlayerPrefs.GetString("T" + y + "input");
 
             //save input
@@ -59,31 +60,38 @@ public class DataManager : MonoBehaviour
                 Debug.Log("save touch feedback");
             }
 
+            t.outputType = PlayerPrefs.GetString("T" + y + "output");
+
             //save output
             if (PlayerPrefs.GetString("T" + y + "output") == "Audio")
             {
                 t.audioURL = PlayerPrefs.GetString("audioURL" + y);
+                Debug.Log(PlayerPrefs.GetString("audioURL" + y));
                 Debug.Log("save audio URL feedback");
             }
             else if (PlayerPrefs.GetString("T" + y + "output") == "Image")
             {
                 t.imageURL = PlayerPrefs.GetString("imageURL" + y);
+                Debug.Log(PlayerPrefs.GetString("imageURL" + y));
                 Debug.Log("save image URL feedback");
             }
             else if (PlayerPrefs.GetString("T" + y + "output") == "Text")
             {
                 t.Texttext = PlayerPrefs.GetString("Text" + y);
+                Debug.Log(PlayerPrefs.GetString("Text" + y));
                 Debug.Log("save text URL feedback");
             }
             else 
             {
                 t.videoURL = PlayerPrefs.GetString("videoURL" + y);
+                Debug.Log(PlayerPrefs.GetString("videoURL" + y));
                 Debug.Log("save video URL feedback");
             }
 
             projectData.triggers.Add(t);
+        
+        
         }
-
         SaveData();
         Debug.Log("Saved");
     }

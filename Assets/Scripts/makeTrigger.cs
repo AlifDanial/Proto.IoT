@@ -24,7 +24,8 @@ public class makeTrigger : MonoBehaviour
     {
         int i = bh.getInput();
         int o = bh.getOutput();
-               
+        j++;               
+
         //increment value of T
         PlayerPrefs.SetInt("T", PlayerPrefs.GetInt("T") + 1);
         Debug.Log(PlayerPrefs.GetInt("T"));
@@ -32,8 +33,7 @@ public class makeTrigger : MonoBehaviour
         PlayerPrefs.SetString("trigger", "T" + PlayerPrefs.GetInt("T"));
         Debug.Log(PlayerPrefs.GetString("trigger"));
 
-        if (j >= 0)
-        {
+        
             go = Instantiate(TriggerPrefab, transform);
             
             Txtcols = go.GetComponentsInChildren<Text>();
@@ -41,10 +41,12 @@ public class makeTrigger : MonoBehaviour
             IName = Txtcols[0];
             OName = Txtcols[1];
             OAction = Txtcols[2];
-            objs.Add(go);       
+            objs.Add(go);                        
             
             Debug.Log("instantiate");
-        }        
+            Debug.Log(j);
+
+                
 
         if (i == 1)
         {
@@ -73,6 +75,7 @@ public class makeTrigger : MonoBehaviour
             Debug.Log(PlayerPrefs.GetString(PlayerPrefs.GetString("trigger") + "output"));
             
             PlayerPrefs.SetString("audioURL" + j, audioURL);
+            Debug.Log(PlayerPrefs.GetString("audioURL" + j));
             Debug.Log("audio = " + audioURL);
         }
         else if (o == 2)
@@ -83,6 +86,7 @@ public class makeTrigger : MonoBehaviour
             Debug.Log(PlayerPrefs.GetString(PlayerPrefs.GetString("trigger") + "output"));
             
             PlayerPrefs.SetString("imageURL" + j, imageURL);
+            Debug.Log(PlayerPrefs.GetString("imageURL" + j));
             Debug.Log("image = " + imageURL);
         }
         else if (o == 3)
@@ -93,6 +97,7 @@ public class makeTrigger : MonoBehaviour
             Debug.Log(PlayerPrefs.GetString(PlayerPrefs.GetString("trigger") + "output"));
            
             PlayerPrefs.SetString("Text" + j, Text);
+            Debug.Log(PlayerPrefs.GetString("Text" + j));
             Debug.Log("text = " + Text);
 
         }
@@ -104,11 +109,10 @@ public class makeTrigger : MonoBehaviour
             Debug.Log(PlayerPrefs.GetString(PlayerPrefs.GetString("trigger") + "output"));             
             
             PlayerPrefs.SetString("videoURL" + j, videoURL);
+            Debug.Log(PlayerPrefs.GetString("videoURL" + j));
             Debug.Log("video = " + videoURL);
         }              
-
-        j++;        
-
+               
         Debug.Log("after " + j);
     }     
 
@@ -144,12 +148,17 @@ public class makeTrigger : MonoBehaviour
 
         else
         {
+            PlayerPrefs.DeleteAll();
             int l = PlayerPrefs.GetInt("T");
 
-            for (int x = 0; x < l; x++)
+            if (l > 1)
             {
-                //if(PlayerPrefs.GetInt("T") != 0)
-                //{
+                j = 1;
+
+                for (int x = 1; x < l; x++)
+                {
+                    //if(PlayerPrefs.GetInt("T") != 0)
+                    //{
                     PlayerPrefs.SetInt("T", PlayerPrefs.GetInt("T") - 1);
                     PlayerPrefs.DeleteKey("trigger" + x + "input");
                     PlayerPrefs.DeleteKey("trigger" + x + "output");
@@ -157,9 +166,13 @@ public class makeTrigger : MonoBehaviour
                     PlayerPrefs.DeleteKey("imageURL" + x + "output");
                     PlayerPrefs.DeleteKey("Text" + x + "output");
                     PlayerPrefs.DeleteKey("videoURL" + x + "output");
-                //}
-               
+                    Debug.Log("deleted" + x + "times");
+                    //}
+
+                }
+                Debug.Log("Deleted all");
             }
+           
         }
         
             
