@@ -109,9 +109,12 @@ public class DataManager : MonoBehaviour
         path = Application.persistentDataPath + "/" + filename;
         Debug.Log(path);
 
+        int l = PlayerPrefs.GetInt("T");
+        l += i;
+
         PlayerPrefs.SetInt("Save", 1);
 
-        for (int y = i + 1; y <= PlayerPrefs.GetInt("T"); y++)
+        for (int y = i+1; y <= l; y++)
         {
             TriggerData t = new TriggerData();
             t.trigger = y;
@@ -162,7 +165,8 @@ public class DataManager : MonoBehaviour
 
             projectData.triggers.Add(t);
             
-            PlayerPrefs.DeleteKey("T" + y + "input");
+            PlayerPrefs.DeleteKey("T" + y + "input");            
+            PlayerPrefs.SetInt("T",PlayerPrefs.GetInt("T") - 1);            
             PlayerPrefs.DeleteKey("T" + y + "output");
             PlayerPrefs.DeleteKey("audioURL" + y);
             PlayerPrefs.DeleteKey("imageURL" + y);

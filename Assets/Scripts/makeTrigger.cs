@@ -51,28 +51,28 @@ public class makeTrigger : MonoBehaviour
         if (i == 1)
         {
             IName.text = "RFID";
-            PlayerPrefs.SetString(PlayerPrefs.GetString("trigger") + "input", IName.text);
-            Debug.Log(PlayerPrefs.GetString(PlayerPrefs.GetString("trigger") + "input"));
+            PlayerPrefs.SetString("T"+ j + "input", IName.text);
+            Debug.Log(PlayerPrefs.GetString("T" + j + "input"));
         }
         else if (i == 2)
         {
             IName.text = "Motion";
-            PlayerPrefs.SetString(PlayerPrefs.GetString("trigger") + "input", IName.text);
-            Debug.Log(PlayerPrefs.GetString(PlayerPrefs.GetString("trigger") + "input"));
+            PlayerPrefs.SetString("T" + j + "input", IName.text);
+            Debug.Log(PlayerPrefs.GetString("T" + j + "input"));
         }
         else
         {
             IName.text = "Touch";
-            PlayerPrefs.SetString(PlayerPrefs.GetString("trigger") + "input", IName.text);
-            Debug.Log(PlayerPrefs.GetString(PlayerPrefs.GetString("trigger") + "input"));
+            PlayerPrefs.SetString("T" + j + "input", IName.text);
+            Debug.Log(PlayerPrefs.GetString("T" + j + "input"));
         }
 
         if (o == 1)
         {
             OName.text = "Audio";
             OAction.text = "PLAY";
-            PlayerPrefs.SetString(PlayerPrefs.GetString("trigger") + "output", OName.text);            
-            Debug.Log(PlayerPrefs.GetString(PlayerPrefs.GetString("trigger") + "output"));
+            PlayerPrefs.SetString("T" + j + "output", OName.text);            
+            Debug.Log(PlayerPrefs.GetString("T" + j + "output"));
             
             PlayerPrefs.SetString("audioURL" + j, audioURL);
             Debug.Log(PlayerPrefs.GetString("audioURL" + j));
@@ -82,8 +82,8 @@ public class makeTrigger : MonoBehaviour
         {
             OName.text = "Image";
             OAction.text = "DISPLAY";            
-            PlayerPrefs.SetString(PlayerPrefs.GetString("trigger") + "output", OName.text);            
-            Debug.Log(PlayerPrefs.GetString(PlayerPrefs.GetString("trigger") + "output"));
+            PlayerPrefs.SetString("T" + j + "output", OName.text);            
+            Debug.Log(PlayerPrefs.GetString("T" + j + "output"));
             
             PlayerPrefs.SetString("imageURL" + j, imageURL);
             Debug.Log(PlayerPrefs.GetString("imageURL" + j));
@@ -93,8 +93,8 @@ public class makeTrigger : MonoBehaviour
         {
             OName.text = "Text";
             OAction.text = "DISPLAY";
-            PlayerPrefs.SetString(PlayerPrefs.GetString("trigger") + "output", OName.text);            
-            Debug.Log(PlayerPrefs.GetString(PlayerPrefs.GetString("trigger") + "output"));
+            PlayerPrefs.SetString("T" + j + "output", OName.text);            
+            Debug.Log(PlayerPrefs.GetString("T" + j + "output"));
            
             PlayerPrefs.SetString("Text" + j, Text);
             Debug.Log(PlayerPrefs.GetString("Text" + j));
@@ -105,8 +105,8 @@ public class makeTrigger : MonoBehaviour
         {
             OName.text = "Video";
             OAction.text = "DISPLAY"; 
-            PlayerPrefs.SetString(PlayerPrefs.GetString("trigger") + "output", OName.text);            
-            Debug.Log(PlayerPrefs.GetString(PlayerPrefs.GetString("trigger") + "output"));             
+            PlayerPrefs.SetString("T" + j + "output", OName.text);            
+            Debug.Log(PlayerPrefs.GetString("T" + j + "output"));             
             
             PlayerPrefs.SetString("videoURL" + j, videoURL);
             Debug.Log(PlayerPrefs.GetString("videoURL" + j));
@@ -146,6 +146,8 @@ public class makeTrigger : MonoBehaviour
 
         else
         {
+            PlayerPrefs.SetInt("T", 0);
+
             //PlayerPrefs.DeleteAll();
             int l = PlayerPrefs.GetInt("T");
 
