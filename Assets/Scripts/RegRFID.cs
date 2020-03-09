@@ -6,6 +6,7 @@ public class RegRFID : MonoBehaviour
 {
 
     public GameObject Sensor;
+    public makeTrigger mt;
     public GameObject closeMe;
     public bool RFID = false;
     public Logo logo;
@@ -19,7 +20,7 @@ public class RegRFID : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (RFID == true && Sensor.GetComponent<ConnectToServer>().SensorData != "Empty")
+        if (RFID == true && Sensor.GetComponent<ConnectToServer>().SensorData != "Empty" && Sensor.GetComponent<ConnectToServer>().SensorData != "Motion" && Sensor.GetComponent<ConnectToServer>().SensorData != "Touch")
         {
             Debug.Log("detected");
             Debug.Log(Sensor.GetComponent<ConnectToServer>().SensorData);
@@ -42,5 +43,7 @@ public class RegRFID : MonoBehaviour
     {
         close(closeMe);
         logo.InputReady();
+        string rfid = Sensor.GetComponent<ConnectToServer>().SensorData;
+        mt.setMotion(rfid);
     }
 }

@@ -18,6 +18,9 @@ public class makeTrigger : MonoBehaviour
     public string audioURL;
     public string imageURL;
     public string Text;
+    public string RFID;
+    public string TOUCH;
+    public string MOTION;
     List<GameObject> objs = new List<GameObject>();    
 
     public void create()
@@ -200,5 +203,25 @@ public class makeTrigger : MonoBehaviour
         Text = s;
         Debug.Log(s);
     }
+
+    public void setRFID(string s)
+    {
+        RFID = s;
+        Debug.Log(s);
+    }
+
+    public void setTouch(string s)
+    {
+        TOUCH = s;
+        Debug.Log(s);
+    }
+
+
+    public void setMotion(string s)
+    {
+        MOTION = s;
+        Debug.Log(s);
+    }
+
 
 }
