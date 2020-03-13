@@ -54,41 +54,47 @@ public class makeTrigger : MonoBehaviour
         if (i == 1)
         {
             IName.text = "RFID";
-            PlayerPrefs.SetString("T"+ j + "input", IName.text);
-            Debug.Log(PlayerPrefs.GetString("T" + j + "input"));
+            //PlayerPrefs.SetString("T"+ j + "input", IName.text);
+            //PlayerPrefs.SetString("card", RFID);
+            PlayerPrefs.SetString("sensor", RFID);
+            Debug.Log(PlayerPrefs.GetString("sensor"));
         }
         else if (i == 2)
         {
             IName.text = "Motion";
-            PlayerPrefs.SetString("T" + j + "input", IName.text);
-            Debug.Log(PlayerPrefs.GetString("T" + j + "input"));
+            //PlayerPrefs.SetString("T" + j + "input", IName.text);
+            PlayerPrefs.SetString("sensor", IName.text);
+            Debug.Log(PlayerPrefs.GetString("sensor"));
         }
         else
         {
             IName.text = "Touch";
-            PlayerPrefs.SetString("T" + j + "input", IName.text);
-            Debug.Log(PlayerPrefs.GetString("T" + j + "input"));
+            //PlayerPrefs.SetString("T" + j + "input", IName.text);
+            PlayerPrefs.SetString("sensor", IName.text);
+            Debug.Log(PlayerPrefs.GetString("sensor"));
         }
 
         if (o == 1)
         {
             OName.text = "Audio";
             OAction.text = "PLAY";
-            PlayerPrefs.SetString("T" + j + "output", OName.text);            
-            Debug.Log(PlayerPrefs.GetString("T" + j + "output"));
+            //PlayerPrefs.SetString("T" + j + "output", OName.text);
+            PlayerPrefs.SetString(PlayerPrefs.GetString("sensor"), "T" + j + OName.text);
+            //Debug.Log(PlayerPrefs.GetString("T" + j + "output"));
             
-            PlayerPrefs.SetString("audioURL" + j, audioURL);
+            PlayerPrefs.SetString("T" + j + OName.text, audioURL);
             Debug.Log(PlayerPrefs.GetString("audioURL" + j));
             Debug.Log("audio = " + audioURL);
         }
         else if (o == 2)
         {
             OName.text = "Image";
-            OAction.text = "DISPLAY";            
-            PlayerPrefs.SetString("T" + j + "output", OName.text);            
+            OAction.text = "DISPLAY";
+            //PlayerPrefs.SetString("T" + j + "output", OName.text);            
+            PlayerPrefs.SetString(PlayerPrefs.GetString("sensor"), "T" + j + OName.text);
             Debug.Log(PlayerPrefs.GetString("T" + j + "output"));
             
-            PlayerPrefs.SetString("imageURL" + j, imageURL);
+            PlayerPrefs.SetString("T" + j + OName.text, imageURL);
             Debug.Log(PlayerPrefs.GetString("imageURL" + j));
             Debug.Log("image = " + imageURL);
         }
@@ -96,10 +102,11 @@ public class makeTrigger : MonoBehaviour
         {
             OName.text = "Text";
             OAction.text = "DISPLAY";
-            PlayerPrefs.SetString("T" + j + "output", OName.text);            
+            //PlayerPrefs.SetString("T" + j + "output", OName.text);            
+            PlayerPrefs.SetString(PlayerPrefs.GetString("sensor"), "T" + j + OName.text);
             Debug.Log(PlayerPrefs.GetString("T" + j + "output"));
            
-            PlayerPrefs.SetString("Text" + j, Text);
+            PlayerPrefs.SetString("T" + j + OName.text, Text);
             Debug.Log(PlayerPrefs.GetString("Text" + j));
             Debug.Log("text = " + Text);
 
@@ -107,16 +114,17 @@ public class makeTrigger : MonoBehaviour
         else
         {
             OName.text = "Video";
-            OAction.text = "DISPLAY"; 
-            PlayerPrefs.SetString("T" + j + "output", OName.text);            
+            OAction.text = "DISPLAY";
+            //PlayerPrefs.SetString("T" + j + "output", OName.text);            
+            PlayerPrefs.SetString(PlayerPrefs.GetString("sensor"), "T" + j + OName.text);
             Debug.Log(PlayerPrefs.GetString("T" + j + "output"));             
             
-            PlayerPrefs.SetString("videoURL" + j, videoURL);
+            PlayerPrefs.SetString("T" + j + OName.text, videoURL);
             Debug.Log(PlayerPrefs.GetString("videoURL" + j));
             Debug.Log("video = " + videoURL);
         }              
                
-        Debug.Log("after " + j);
+        Debug.Log("trigger iteration: " + j);
     }     
 
     public void deleteSeq()

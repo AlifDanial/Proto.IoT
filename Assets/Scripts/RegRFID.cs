@@ -44,6 +44,6 @@ public class RegRFID : MonoBehaviour
         close(closeMe);
         logo.InputReady();
         string rfid = Sensor.GetComponent<ConnectToServer>().SensorData;
-        mt.setMotion(rfid);
+        mt.setRFID(rfid);
     }
 }

@@ -7,6 +7,7 @@ public class DataManager : MonoBehaviour
     string filename;
     string path;
     ProjectData projectData = new ProjectData();
+    public Run run;
     int i=0;
 
     // Start is called before the first frame update
@@ -29,6 +30,7 @@ public class DataManager : MonoBehaviour
         wrapper.triggers = projectData;
         string contents = JsonUtility.ToJson(wrapper, true);
         System.IO.File.WriteAllText(path, contents);
+        run.setPath(path);
         ReadData();
     }
 
@@ -52,7 +54,7 @@ public class DataManager : MonoBehaviour
 
                     if(i == "RFID")
                     {
-                        Debug.Log("RFID");
+                        Debug.Log("card data = " + s.RFIDcard);
                     }
                     else if (i == "Motion")
                     {
@@ -124,15 +126,15 @@ public class DataManager : MonoBehaviour
             //save input
             if(PlayerPrefs.GetString("T" + y + "input") == "RFID")
             {
-                Debug.Log("save rfid card");
+                t.RFIDcard = PlayerPrefs.GetString("T" + y + "card");
             }
             else if (PlayerPrefs.GetString("T" + y + "input") == "Motion")
             {
-                Debug.Log("save motion feedback");
+                t.Motion = PlayerPrefs.GetString("T" + y + "input");
             }
             else
             {
-                Debug.Log("save touch feedback");
+                t.Touch = PlayerPrefs.GetString("T" + y + "input");
             }
 
             t.outputType = PlayerPrefs.GetString("T" + y + "output");
@@ -165,19 +167,21 @@ public class DataManager : MonoBehaviour
 
             projectData.triggers.Add(t);
             
-            PlayerPrefs.DeleteKey("T" + y + "input");            
+            /*PlayerPrefs.DeleteKey("T" + y + "input");            
+            PlayerPrefs.DeleteKey("T" + y + "card");            
             PlayerPrefs.SetInt("T",PlayerPrefs.GetInt("T") - 1);            
             PlayerPrefs.DeleteKey("T" + y + "output");
             PlayerPrefs.DeleteKey("audioURL" + y);
             PlayerPrefs.DeleteKey("imageURL" + y);
             PlayerPrefs.DeleteKey("Text" + y);
             PlayerPrefs.DeleteKey("videoURL" + y);
-            Debug.Log("deleted " + y + " times");
+            Debug.Log("deleted " + y + " times");*/
 
             i = y;
         }
 
-        SaveData();
         Debug.Log("Saved");
+        SaveData();
+        
     }
 }

@@ -106,6 +106,7 @@
     <Compile Include="Assets\Scripts\RegMotion.cs" />
     <Compile Include="Assets\Scripts\RegRFID.cs" />
     <Compile Include="Assets\Scripts\RegTouch.cs" />
+    <Compile Include="Assets\Scripts\Run.cs" />
     <Compile Include="Assets\Scripts\SaveChangesButton.cs" />
     <Compile Include="Assets\Scripts\sceneChanger.cs" />
     <Compile Include="Assets\Scripts\SetProjectName.cs" />
