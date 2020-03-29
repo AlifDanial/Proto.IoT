@@ -13,8 +13,8 @@ public class Clickable : MonoBehaviour
     public Logo logo;
     
     public string ImageURL = "";
-    public string AudioURL;
-    public string VideoURL;
+    public string AudioURL = "";
+    public string VideoURL = "";
 
 
    public void close(GameObject go)
@@ -45,7 +45,7 @@ public class Clickable : MonoBehaviour
         if (VideoURL != "")
         {
             Debug.Log(VideoURL);
-            mt.setVideoURL(videocontrol.getURL());
+            mt.setVideoURL(VideoURL);
             logo.OutputReady();
             popup.PopupClose(go);
         }

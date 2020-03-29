@@ -14,13 +14,13 @@ public class audioInstantiate : MonoBehaviour
 
     public void Import()
     {
-
+        
         path = EditorUtility.OpenFilePanel("Import an Audio File", "", "mp3");
         if (path.Length != 0)
         {
             Image o;
             o = Instantiate(prefab, transform);
-            StartCoroutine(LoadAudio(path));
+            StartCoroutine(LoadAudio(path));            
 
         }
     }
@@ -33,11 +33,9 @@ public class audioInstantiate : MonoBehaviour
             yield return www;
 
             audios.clip = www.GetAudioClip(false, true, AudioType.OGGVORBIS);
-            audios.clip.name = url;
+            audios.clip.name = path;            
             audios.Play();
-            //Isprite = Sprite.Create(www.texture, new Rect(0, 0, www.texture.width, www.texture.height), new Vector2(0.5f, 0.5f));
-            //o.GetComponent<Image>().sprite = Isprite;
-            //o.GetComponent<Image>().sprite.name = path;
+            
         
     }
 

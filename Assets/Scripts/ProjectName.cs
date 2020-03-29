@@ -7,7 +7,12 @@ using UnityEngine.UI;
 public class ProjectName : MonoBehaviour
 {
     public InputField input;
- 
+
+    private void Start()
+    {
+        PlayerPrefs.DeleteAll();
+    }
+
     public void StoreProjectName()
     {
         //PlayerPrefs.DeleteKey("ProjectName");

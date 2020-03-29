@@ -12,7 +12,16 @@ public class videoController : MonoBehaviour
 
     public void select()
     {
-        URL = vp.url;
+        
+        if(vp.url == "")
+        {
+            URL = vp.clip.name;            
+        }
+        else
+        {
+            URL = vp.url;          
+        }
+
         clicks.VideoURL = URL;
         Debug.Log(URL);
         clicked = true;

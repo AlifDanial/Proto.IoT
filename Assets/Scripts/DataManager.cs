@@ -13,7 +13,7 @@ public class DataManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        run.enabled = false;
                 
     }
     
@@ -29,9 +29,10 @@ public class DataManager : MonoBehaviour
         JSONwrapper wrapper = new JSONwrapper();
         wrapper.triggers = projectData;
         string contents = JsonUtility.ToJson(wrapper, true);
-        System.IO.File.WriteAllText(path, contents);
+        System.IO.File.WriteAllText(path, contents);        
         run.setPath(path);
-        ReadData();
+        run.enabled = true;        
+        //ReadData();
     }
 
     public void ReadData()
@@ -47,49 +48,14 @@ public class DataManager : MonoBehaviour
                 foreach (TriggerData s in projectData.triggers)
                 {
                     int t = s.trigger;
-                    Debug.Log("trigger value = " + t);
+                    Debug.Log("Trigger = " + t);
 
-                    string i = s.inputType;
-                    Debug.Log("input type = " + i);
+                    string i = s.input;
+                    Debug.Log("input = " + i);
 
-                    if(i == "RFID")
-                    {
-                        Debug.Log("card data = " + s.RFIDcard);
-                    }
-                    else if (i == "Motion")
-                    {
-                        Debug.Log("Motion");
-                    }
-                    else
-                    {
-                        Debug.Log("Touch");
-                    }
-
-                    string o = s.outputType;
-                    Debug.Log("output type = " + o);
-
-                    if (o == "Audio")
-                    {
-                        string audioURL = s.audioURL;
-                        Debug.Log("audio URL = " + audioURL);
-                    }
-                    else if (o == "Image")
-                    {
-                        string imageURL = s.imageURL;
-                        Debug.Log("image URL = " + imageURL);
-                    }
-                    else if (o == "Text")
-                    {
-                        string text = s.Texttext;
-                        Debug.Log("text = " + text);
-                    }
-                    else
-                    {
-                        string video = s.videoURL;
-                        Debug.Log("video URL = " + video);
-                    }
+                    string o = s.output;
+                    Debug.Log("output = " + o);
                 }
-                    
                
             }
             else
@@ -112,7 +78,9 @@ public class DataManager : MonoBehaviour
         Debug.Log(path);
 
         int l = PlayerPrefs.GetInt("T");
-        l += i;
+        //l = l - i;
+        Debug.Log("i = " + i);
+        Debug.Log("l = " + l);
 
         PlayerPrefs.SetInt("Save", 1);
 
@@ -121,67 +89,30 @@ public class DataManager : MonoBehaviour
             TriggerData t = new TriggerData();
             t.trigger = y;
 
-            t.inputType = PlayerPrefs.GetString("T" + y + "input");
-
-            //save input
-            if(PlayerPrefs.GetString("T" + y + "input") == "RFID")
-            {
-                t.RFIDcard = PlayerPrefs.GetString("T" + y + "card");
-            }
-            else if (PlayerPrefs.GetString("T" + y + "input") == "Motion")
-            {
-                t.Motion = PlayerPrefs.GetString("T" + y + "input");
-            }
-            else
-            {
-                t.Touch = PlayerPrefs.GetString("T" + y + "input");
-            }
-
-            t.outputType = PlayerPrefs.GetString("T" + y + "output");
-
-            //save output
-            if (PlayerPrefs.GetString("T" + y + "output") == "Audio")
-            {
-                t.audioURL = PlayerPrefs.GetString("audioURL" + y);
-                Debug.Log(PlayerPrefs.GetString("audioURL" + y));
-                Debug.Log("save audio URL feedback");
-            }
-            else if (PlayerPrefs.GetString("T" + y + "output") == "Image")
-            {
-                t.imageURL = PlayerPrefs.GetString("imageURL" + y);
-                Debug.Log(PlayerPrefs.GetString("imageURL" + y));
-                Debug.Log("save image URL feedback");
-            }
-            else if (PlayerPrefs.GetString("T" + y + "output") == "Text")
-            {
-                t.Texttext = PlayerPrefs.GetString("Text" + y);
-                Debug.Log(PlayerPrefs.GetString("Text" + y));
-                Debug.Log("save text URL feedback");
-            }
-            else 
-            {
-                t.videoURL = PlayerPrefs.GetString("videoURL" + y);
-                Debug.Log(PlayerPrefs.GetString("videoURL" + y));
-                Debug.Log("save video URL feedback");
-            }
+            t.input = PlayerPrefs.GetString("sensor" + y);
+            t.output = PlayerPrefs.GetString(PlayerPrefs.GetString("sensor" + y));            
+            t.outputType = PlayerPrefs.GetString("outputType" + y);            
 
             projectData.triggers.Add(t);
+
+            PlayerPrefs.DeleteKey("sensor" + y);            
+            PlayerPrefs.DeleteKey(PlayerPrefs.GetString("sensor" + y));            
+            PlayerPrefs.DeleteKey("outputType" + y);                       
+                                 
             
-            /*PlayerPrefs.DeleteKey("T" + y + "input");            
-            PlayerPrefs.DeleteKey("T" + y + "card");            
-            PlayerPrefs.SetInt("T",PlayerPrefs.GetInt("T") - 1);            
-            PlayerPrefs.DeleteKey("T" + y + "output");
-            PlayerPrefs.DeleteKey("audioURL" + y);
-            PlayerPrefs.DeleteKey("imageURL" + y);
-            PlayerPrefs.DeleteKey("Text" + y);
-            PlayerPrefs.DeleteKey("videoURL" + y);
-            Debug.Log("deleted " + y + " times");*/
 
             i = y;
+            Debug.Log("y = " + y);
         }
-
+        
         Debug.Log("Saved");
         SaveData();
         
+    }
+
+    public void stopRun()
+    {
+        run.stopScan();
+        run.enabled = false;
     }
 }

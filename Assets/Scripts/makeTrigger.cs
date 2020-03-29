@@ -30,12 +30,8 @@ public class makeTrigger : MonoBehaviour
         j++;               
 
         //increment value of T
-        PlayerPrefs.SetInt("T", PlayerPrefs.GetInt("T") + 1);
-        Debug.Log(PlayerPrefs.GetInt("T"));
-        //set the trigger foreign key        
-        PlayerPrefs.SetString("trigger", "T" + PlayerPrefs.GetInt("T"));
-        Debug.Log(PlayerPrefs.GetString("trigger"));
-
+        PlayerPrefs.SetInt("T", j);
+        Debug.Log("T = " + PlayerPrefs.GetInt("T"));        
         
             go = Instantiate(TriggerPrefab, transform);
             
@@ -56,22 +52,22 @@ public class makeTrigger : MonoBehaviour
             IName.text = "RFID";
             //PlayerPrefs.SetString("T"+ j + "input", IName.text);
             //PlayerPrefs.SetString("card", RFID);
-            PlayerPrefs.SetString("sensor", RFID);
-            Debug.Log(PlayerPrefs.GetString("sensor"));
+            PlayerPrefs.SetString("sensor" + j, RFID);
+            Debug.Log(PlayerPrefs.GetString("sensor" + j));
         }
         else if (i == 2)
         {
             IName.text = "Motion";
             //PlayerPrefs.SetString("T" + j + "input", IName.text);
-            PlayerPrefs.SetString("sensor", IName.text);
-            Debug.Log(PlayerPrefs.GetString("sensor"));
+            PlayerPrefs.SetString("sensor" + j, IName.text);
+            Debug.Log(PlayerPrefs.GetString("sensor" + j));
         }
         else
         {
             IName.text = "Touch";
             //PlayerPrefs.SetString("T" + j + "input", IName.text);
-            PlayerPrefs.SetString("sensor", IName.text);
-            Debug.Log(PlayerPrefs.GetString("sensor"));
+            PlayerPrefs.SetString("sensor" + j, IName.text);
+            Debug.Log(PlayerPrefs.GetString("sensor" + j));
         }
 
         if (o == 1)
@@ -79,36 +75,28 @@ public class makeTrigger : MonoBehaviour
             OName.text = "Audio";
             OAction.text = "PLAY";
             //PlayerPrefs.SetString("T" + j + "output", OName.text);
-            PlayerPrefs.SetString(PlayerPrefs.GetString("sensor"), "T" + j + OName.text);
-            //Debug.Log(PlayerPrefs.GetString("T" + j + "output"));
-            
-            PlayerPrefs.SetString("T" + j + OName.text, audioURL);
-            Debug.Log(PlayerPrefs.GetString("audioURL" + j));
-            Debug.Log("audio = " + audioURL);
+            PlayerPrefs.SetString(PlayerPrefs.GetString("sensor" + j), audioURL);
+            PlayerPrefs.SetString("outputType" + j, OName.text);
+            //Debug.Log(PlayerPrefs.GetString("T" + j + "output"));          
+           
         }
         else if (o == 2)
         {
             OName.text = "Image";
             OAction.text = "DISPLAY";
             //PlayerPrefs.SetString("T" + j + "output", OName.text);            
-            PlayerPrefs.SetString(PlayerPrefs.GetString("sensor"), "T" + j + OName.text);
-            Debug.Log(PlayerPrefs.GetString("T" + j + "output"));
-            
-            PlayerPrefs.SetString("T" + j + OName.text, imageURL);
-            Debug.Log(PlayerPrefs.GetString("imageURL" + j));
-            Debug.Log("image = " + imageURL);
+            PlayerPrefs.SetString(PlayerPrefs.GetString("sensor" + j), imageURL);
+            PlayerPrefs.SetString("outputType" + j, OName.text);
+
         }
         else if (o == 3)
         {
             OName.text = "Text";
             OAction.text = "DISPLAY";
             //PlayerPrefs.SetString("T" + j + "output", OName.text);            
-            PlayerPrefs.SetString(PlayerPrefs.GetString("sensor"), "T" + j + OName.text);
-            Debug.Log(PlayerPrefs.GetString("T" + j + "output"));
-           
-            PlayerPrefs.SetString("T" + j + OName.text, Text);
-            Debug.Log(PlayerPrefs.GetString("Text" + j));
-            Debug.Log("text = " + Text);
+            PlayerPrefs.SetString(PlayerPrefs.GetString("sensor" + j), Text);
+            PlayerPrefs.SetString("outputType" + j, OName.text);
+
 
         }
         else
@@ -116,12 +104,10 @@ public class makeTrigger : MonoBehaviour
             OName.text = "Video";
             OAction.text = "DISPLAY";
             //PlayerPrefs.SetString("T" + j + "output", OName.text);            
-            PlayerPrefs.SetString(PlayerPrefs.GetString("sensor"), "T" + j + OName.text);
-            Debug.Log(PlayerPrefs.GetString("T" + j + "output"));             
-            
-            PlayerPrefs.SetString("T" + j + OName.text, videoURL);
-            Debug.Log(PlayerPrefs.GetString("videoURL" + j));
-            Debug.Log("video = " + videoURL);
+            PlayerPrefs.SetString(PlayerPrefs.GetString("sensor" + j), videoURL);
+            PlayerPrefs.SetString("outputType" + j, OName.text);
+            Debug.Log("MAKETRIGGER videoURL :" + videoURL);
+
         }              
                
         Debug.Log("trigger iteration: " + j);
@@ -135,18 +121,14 @@ public class makeTrigger : MonoBehaviour
         if (j > 0 && a != 0)
         {
             Debug.Log("before =" + PlayerPrefs.GetInt("T"));
-            Debug.Log("input =" + PlayerPrefs.GetString("T" + j + "input"));
-            Debug.Log("output =" + PlayerPrefs.GetString("T" + j + "output"));
 
-            PlayerPrefs.DeleteKey("T" + j + "input");
-            PlayerPrefs.DeleteKey("T" + j + "output");
+            PlayerPrefs.DeleteKey("sensor" + j);
+            PlayerPrefs.DeleteKey(PlayerPrefs.GetString("sensor" + j));
+            PlayerPrefs.DeleteKey("outputType" + j);
 
-            PlayerPrefs.DeleteKey("audioURL" + j + "output");
-            PlayerPrefs.DeleteKey("imageURL" + j + "output");
-            PlayerPrefs.DeleteKey("Text" + j + "output");
-            PlayerPrefs.DeleteKey("videoURL" + j + "output");
-            
-            PlayerPrefs.SetInt("T", PlayerPrefs.GetInt("T")-1);            
+            PlayerPrefs.SetInt("T", PlayerPrefs.GetInt("T")-1);
+
+            Debug.Log(PlayerPrefs.GetInt("T"));
 
             GameObject c = objs[a-1];
             Destroy(c);
@@ -171,12 +153,9 @@ public class makeTrigger : MonoBehaviour
                     
                     PlayerPrefs.SetInt("T", PlayerPrefs.GetInt("T") - 1);                   
 
-                    PlayerPrefs.DeleteKey("T" + x + "input");
-                    PlayerPrefs.DeleteKey("T" + x + "output");
-                    PlayerPrefs.DeleteKey("audioURL" + x);
-                    PlayerPrefs.DeleteKey("imageURL" + x);
-                    PlayerPrefs.DeleteKey("Text" + x);
-                    PlayerPrefs.DeleteKey("videoURL" + x);
+                    PlayerPrefs.DeleteKey("sensor" + x);
+                    PlayerPrefs.DeleteKey(PlayerPrefs.GetString("sensor" + x));                   
+                    PlayerPrefs.DeleteKey("outputType" + x);                   
                     Debug.Log("deleted " + x + " times");
 
                 }

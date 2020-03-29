@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1517890204189059263}
   - component: {fileID: 8022099077961040874}
   - component: {fileID: 6391904513935252768}
+  - component: {fileID: 4233504419894880223}
   m_Layer: 5
   m_Name: ImageButton
   m_TagString: Untagged
@@ -143,5 +144,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 8022099077961040874}
   BackgroundURL: 
-  path: 
-  clicked: 0
+  clicks: {fileID: 4233504419894880223}
+--- !u!114 &4233504419894880223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8699511658958917257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcbcbcf580c3c0648aa2ff2644879ed9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageselector: {fileID: 0}
+  videocontrol: {fileID: 0}
+  audiocontrol: {fileID: 0}
+  textchecker: {fileID: 0}
+  mt: {fileID: 0}
+  popup: {fileID: 0}
+  logo: {fileID: 0}
+  ImageURL: 
+  AudioURL: 
+  VideoURL: 
