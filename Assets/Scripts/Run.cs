@@ -34,6 +34,22 @@ public class Run : MonoBehaviour
     public Text audiostext;
     public Image audiosI;
 
+    public Image rfid;
+    public Text rfidt;
+    public Image motion;
+    public Text motiont;
+    public Image touch;
+    public Text toucht;
+
+    public Image audio;
+    public Text audiot;
+    public Image image;
+    public Text imaget;
+    public Image text;
+    public Text textt;
+    public Image video;
+    public Text videot;
+
     #region Consts: Standard values used in almost all conversions.
     private const float const_1_div_128_ = 1.0f / 128.0f;  // 8 bit multiplier
     private const float const_1_div_32768_ = 1.0f / 32768.0f; // 16 bit multiplier
@@ -117,12 +133,59 @@ public class Run : MonoBehaviour
         stop = true;
     }
 
+    public void show(Image a, Text b)
+    {
+        a.enabled = true;
+        b.enabled = true;
+    }
+
+    public void hide(Image a, Image b, Image c, Text d, Text e, Text f)
+    {
+        a.enabled = false;
+        b.enabled = false;
+        c.enabled = false;
+        d.enabled = false;
+        e.enabled = false;
+        f.enabled = false;
+    }
+
+    public void hideIn(Image a, Image b, Text d, Text e)
+    {
+        a.enabled = false;
+        b.enabled = false;        
+        d.enabled = false;
+        e.enabled = false;        
+    }
+
     public void triggerScan(string s)
     {        
         if (temp != s)
         {
             temp = s;
             registered = false;
+
+            Debug.Log("TEMP = " + temp);
+
+            if(temp == "Motion")
+            {
+                show(motion, motiont);
+                hideIn(rfid, touch, rfidt,toucht);
+                Debug.Log("TEMP = " + temp);
+            }
+
+            else if (temp == "Touch")
+            {
+                show(touch, toucht);
+                hideIn(rfid, motion, rfidt, motiont);
+                Debug.Log("TEMP = " + temp);
+            }
+
+            else
+            {
+                show(rfid, rfidt);
+                hideIn(motion, touch, motiont, toucht);
+                Debug.Log("TEMP = " + temp);
+            }
         }
         
         if (System.IO.File.Exists(path) && stop == false)
@@ -151,6 +214,9 @@ public class Run : MonoBehaviour
                         audiosI.enabled = true;
                         audiostext.enabled = true;
                         audiostext.text = filename;
+
+                        show(audio, audiot);
+                        hide(image, text, video, imaget, textt, videot);
                         
                         if(t.output == "Bell" || t.output == "Fire Alarm" || t.output == "Police Siren" || t.output == "Service Bell" || t.output == "SOS Morse Code")
                         {
@@ -176,6 +242,9 @@ public class Run : MonoBehaviour
                     {
                         o.enabled = true;
 
+                        show(image, imaget);
+                        hide(audio, text, video, audiot, textt, videot);
+
                         if (t.output == "Aid" || t.output == "Break Down" || t.output == "Fire" || t.output == "Flood" || t.output == "Home" || t.output == "Locked" || t.output == "Secure" || t.output == "Tire" || t.output == "Weather")
                         {
                             string resource = "Image/";
@@ -200,6 +269,10 @@ public class Run : MonoBehaviour
                     if (t.outputType == "Video")
                     {                        
                         ri.enabled = true;
+
+                        show(video, videot);
+                        hide(image, text, audio, imaget, textt, audiot);
+
                         if (t.output == "atoms" || t.output == "candle" || t.output == "earth" || t.output == "particle")
                         {
                             RenderTexture rendertexture;
@@ -232,6 +305,10 @@ public class Run : MonoBehaviour
                     if (t.outputType == "Text")
                     {
                         texto.enabled = true;
+
+                        show(text, textt);
+                        hide(image, audio, video, imaget, audiot, videot);
+
                         texto.text = t.output;
 
                         audioSource.enabled = false;
