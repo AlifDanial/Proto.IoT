@@ -7,8 +7,11 @@ public class DataManager : MonoBehaviour
     string filename;
     string path;
     ProjectData projectData = new ProjectData();
+    public StartMenu sm;
     public Run run;
     int i=0;
+    string temp = "";
+    public bool loaded = false;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +32,15 @@ public class DataManager : MonoBehaviour
         JSONwrapper wrapper = new JSONwrapper();
         wrapper.triggers = projectData;
         string contents = JsonUtility.ToJson(wrapper, true);
-        System.IO.File.WriteAllText(path, contents);        
+        System.IO.File.WriteAllText(path, contents);
+
+        if(temp != path && loaded == false)
+        {
+            temp = path;
+            sm.setSave(path);
+            sm.readPath();
+        }
+       
         run.setPath(path);
         run.enabled = true;        
         //ReadData();
@@ -73,8 +84,9 @@ public class DataManager : MonoBehaviour
     public void Save()
     { 
 
-        filename = PlayerPrefs.GetString("fileName");               
+        filename = PlayerPrefs.GetString("fileName");              
         path = Application.persistentDataPath + "/" + filename;
+
         Debug.Log(path);
 
         int l = PlayerPrefs.GetInt("T");
@@ -98,9 +110,7 @@ public class DataManager : MonoBehaviour
             PlayerPrefs.DeleteKey("sensor" + y);            
             PlayerPrefs.DeleteKey(PlayerPrefs.GetString("sensor" + y));            
             PlayerPrefs.DeleteKey("outputType" + y);                       
-                                 
-            
-
+                                             
             i = y;
             Debug.Log("y = " + y);
         }

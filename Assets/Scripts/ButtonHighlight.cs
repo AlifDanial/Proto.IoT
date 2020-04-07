@@ -29,13 +29,15 @@ public class ButtonHighlight : MonoBehaviour {
     public GameObject MOTOR;
     public GameObject VIDEO;
     public GameObject GRAPHICS;
+    public makeTrigger mt;
+    public GameObject panel;
 
     public int input;
     public int output;
 
 
 
-    void Start()
+    public void Start()
     {
         InitializeColors(btn1);
         InitializeColors(btn2);
@@ -126,7 +128,7 @@ public class ButtonHighlight : MonoBehaviour {
             InitializeGO(SOUND);
             input = 1;
         }
-        if (i == 2)
+        if (i == 2 && mt.motionInst == false)
         {
             HighlightButton(btn2);
             DeactivateButton(btn1);
@@ -137,6 +139,10 @@ public class ButtonHighlight : MonoBehaviour {
             InitializeGO(TOUCH);
             InitializeGO(SOUND);
             input = 2;
+        }
+        if(i == 2 && mt.motionInst == true)
+        {
+            panel.gameObject.SetActive(true);
         }
         if (i == 3)
         {

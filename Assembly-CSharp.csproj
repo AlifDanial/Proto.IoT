@@ -98,6 +98,7 @@
     <Compile Include="Assets\Scripts\MP3Import.cs" />
     <Compile Include="Assets\Scripts\Multiplayer\Model\Character.cs" />
     <Compile Include="Assets\Scripts\Multiplayer\Model\DemoData.cs" />
+    <Compile Include="Assets\Scripts\openFile.cs" />
     <Compile Include="Assets\Scripts\Populate.cs" />
     <Compile Include="Assets\Scripts\Popup.cs" />
     <Compile Include="Assets\Scripts\ProjectData.cs" />
@@ -108,13 +109,16 @@
     <Compile Include="Assets\Scripts\RegTouch.cs" />
     <Compile Include="Assets\Scripts\Run.cs" />
     <Compile Include="Assets\Scripts\SaveChangesButton.cs" />
+    <Compile Include="Assets\Scripts\saveData.cs" />
     <Compile Include="Assets\Scripts\sceneChanger.cs" />
     <Compile Include="Assets\Scripts\SetProjectName.cs" />
+    <Compile Include="Assets\Scripts\StartMenu.cs" />
     <Compile Include="Assets\Scripts\TextCheck.cs" />
     <Compile Include="Assets\Scripts\TriggerData.cs" />
     <Compile Include="Assets\Scripts\videoController.cs" />
     <Compile Include="Assets\Scripts\videoInstant.cs" />
     <Compile Include="Assets\Scripts\videoLoad.cs" />
+    <Compile Include="Assets\Scripts\Wrapper.cs" />
     <Compile Include="Assets\SocketIO\JSONObject\JSONObject.cs" />
     <Compile Include="Assets\SocketIO\JSONObject\JSONTemplates.cs" />
     <Compile Include="Assets\SocketIO\JSONObject\VectorTemplates.cs" />

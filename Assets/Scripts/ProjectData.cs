@@ -7,4 +7,5 @@ using System;
 public class ProjectData
 {
     public List<TriggerData> triggers = new List<TriggerData>();
+    public List<SaveData> saves = new List<SaveData>();
 }

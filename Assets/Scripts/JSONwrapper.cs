@@ -6,5 +6,5 @@ using System;
 [Serializable]
 public class JSONwrapper
 {
-    public ProjectData triggers;
+    public ProjectData triggers;    
 }

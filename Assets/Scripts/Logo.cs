@@ -35,6 +35,7 @@ public class Logo : MonoBehaviour
     public Text NOTREADY;
     public Text READY1;
     public Text NOTREADY1;
+    public makeTrigger mt;
 
     public bool input = false;
     public bool output = false;    
@@ -42,7 +43,8 @@ public class Logo : MonoBehaviour
 
 
 
-    void Start()
+
+    public void Start()
     {
         img1.enabled = false;
         img2.enabled = false;
@@ -91,7 +93,7 @@ public class Logo : MonoBehaviour
             NOTREADY.enabled = true;
             READY.enabled = false;
         }
-        if (i == 2)
+        if (i == 2 && mt.motionInst == false)
         {
             img1.enabled = false;
             img2.enabled = true;
@@ -217,7 +219,7 @@ public class Logo : MonoBehaviour
             txt3.enabled = false;
             txt4.enabled = false;
         }
-        if (i == 2)
+        if (i == 2 && mt.motionInst == false)
         {
             txt1.enabled = false;
             txt2.enabled = true;

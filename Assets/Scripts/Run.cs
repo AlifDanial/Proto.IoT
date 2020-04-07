@@ -71,6 +71,8 @@ public class Run : MonoBehaviour
             JSONwrapper wrapper = JsonUtility.FromJson<JSONwrapper>(contents);
             projectData = wrapper.triggers;
         }        
+
+
     }
 
     // Update is called once per frame
@@ -88,7 +90,12 @@ public class Run : MonoBehaviour
             JSONwrapper wrapper = JsonUtility.FromJson<JSONwrapper>(contents);
             projectData = wrapper.triggers;
         }
-        stop = false;
+        
+        Sensor.GetComponent<ConnectToServer>().SensorData = "EMPTY";
+        stop = false;        
+        ri.gameObject.SetActive(false);
+        audiosI.gameObject.SetActive(false);
+        audiostext.enabled = false;
     }
 
     public void readData()
@@ -131,30 +138,34 @@ public class Run : MonoBehaviour
     public void stopScan()
     {
         stop = true;
+        Sensor.GetComponent<ConnectToServer>().SensorData = "EMPTY";
+        audiosI.gameObject.SetActive(false);
+        ri.gameObject.SetActive(false);
+        audiostext.enabled = false;
     }
 
     public void show(Image a, Text b)
     {
-        a.enabled = true;
-        b.enabled = true;
+        a.gameObject.SetActive(true);
+        b.gameObject.SetActive(true);
     }
 
     public void hide(Image a, Image b, Image c, Text d, Text e, Text f)
     {
-        a.enabled = false;
-        b.enabled = false;
-        c.enabled = false;
-        d.enabled = false;
-        e.enabled = false;
-        f.enabled = false;
+        a.gameObject.SetActive(false);
+        b.gameObject.SetActive(false);
+        c.gameObject.SetActive(false);
+        d.gameObject.SetActive(false);
+        e.gameObject.SetActive(false);
+        f.gameObject.SetActive(false);
     }
 
     public void hideIn(Image a, Image b, Text d, Text e)
     {
-        a.enabled = false;
-        b.enabled = false;        
-        d.enabled = false;
-        e.enabled = false;        
+        a.gameObject.SetActive(false);
+        b.gameObject.SetActive(false);
+        d.gameObject.SetActive(false);
+        e.gameObject.SetActive(false);
     }
 
     public void triggerScan(string s)
@@ -173,14 +184,14 @@ public class Run : MonoBehaviour
                 Debug.Log("TEMP = " + temp);
             }
 
-            else if (temp == "Touch")
+            else if (temp.Contains("Touch"))
             {
                 show(touch, toucht);
                 hideIn(rfid, motion, rfidt, motiont);
                 Debug.Log("TEMP = " + temp);
             }
 
-            else
+            else if (temp.Contains("Card"))
             {
                 show(rfid, rfidt);
                 hideIn(motion, touch, motiont, toucht);
@@ -199,8 +210,7 @@ public class Run : MonoBehaviour
                     Debug.Log("Output = " + t.output);
                     Debug.Log("OutputType = " + t.outputType);
 
-                    ri.enabled = false;
-                    audiosI.enabled = false;
+                    
                     o.enabled = false;
                     audioSource.enabled = false;                    
                     texto.enabled = false;
@@ -211,7 +221,7 @@ public class Run : MonoBehaviour
                     {
                         string filename = Path.GetFileName(t.output);
                         audioSource.enabled = true;
-                        audiosI.enabled = true;
+                        audiosI.gameObject.SetActive(true);
                         audiostext.enabled = true;
                         audiostext.text = filename;
 
@@ -231,17 +241,16 @@ public class Run : MonoBehaviour
                         {
                             MP3(t.output);
                         }
-                        
 
-                        o.enabled = false;
-                        ri.enabled = false;
+                        ri.gameObject.SetActive(false);
+                        o.enabled = false;                        
                         texto.enabled = false;                       
                     }
 
                     if (t.outputType == "Image")
                     {
                         o.enabled = true;
-
+                        
                         show(image, imaget);
                         hide(audio, text, video, audiot, textt, videot);
 
@@ -258,18 +267,17 @@ public class Run : MonoBehaviour
                         {
                             IMAGE(t.output);
                         }
-                        
-                        audioSource.enabled = false;
-                        ri.enabled = false;
-                        texto.enabled = false;
-                        audiosI.enabled = false;
+
+                        audiosI.gameObject.SetActive(false);
+                        ri.gameObject.SetActive(false);
+                        audioSource.enabled = false;                        
+                        texto.enabled = false;                        
                         audiostext.enabled = false;
                     }
 
                     if (t.outputType == "Video")
-                    {                        
-                        ri.enabled = true;
-
+                    {
+                        ri.gameObject.SetActive(true);                        
                         show(video, videot);
                         hide(image, text, audio, imaget, textt, audiot);
 
@@ -294,16 +302,18 @@ public class Run : MonoBehaviour
                         {
                             VIDEO(t.output);
                         }
-                        
+
+                        audiosI.gameObject.SetActive(false);
                         audioSource.enabled = false;
                         o.enabled = false;
                         texto.enabled = false;
-                        audiosI.enabled = false;
+                       
                         audiostext.enabled = false;
                     }
 
                     if (t.outputType == "Text")
                     {
+                        
                         texto.enabled = true;
 
                         show(text, textt);
@@ -311,10 +321,11 @@ public class Run : MonoBehaviour
 
                         texto.text = t.output;
 
+                        audiosI.gameObject.SetActive(false);
+                        ri.gameObject.SetActive(false);
                         audioSource.enabled = false;
-                        o.enabled = false;
-                        ri.enabled = false;
-                        audiosI.enabled = false;
+                        o.enabled = false;                       
+                        
                         audiostext.enabled = false;
                     }
                 }
