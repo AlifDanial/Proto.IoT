@@ -99,6 +99,7 @@
     <Compile Include="Assets\Scripts\Multiplayer\Model\Character.cs" />
     <Compile Include="Assets\Scripts\Multiplayer\Model\DemoData.cs" />
     <Compile Include="Assets\Scripts\openFile.cs" />
+    <Compile Include="Assets\Scripts\openLink.cs" />
     <Compile Include="Assets\Scripts\Populate.cs" />
     <Compile Include="Assets\Scripts\Popup.cs" />
     <Compile Include="Assets\Scripts\ProjectData.cs" />
